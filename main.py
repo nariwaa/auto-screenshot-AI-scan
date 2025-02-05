@@ -12,7 +12,7 @@ MODEL_NAME = "llava:7b"
 OLLAMA_HOST = "http://192.168.1.122:11434"
 # OLLAMA_HOST = "http://127.0.0.1:11434"
 
-ANALYSIS_PROMPT = "Analyze this screenshot and describe its contents. Be concise."
+ANALYSIS_PROMPT = "Describe what you see"
 SCREENSHOT_DIR = "/home/ayaya/Screenshots/"
 
 # Code
@@ -21,6 +21,7 @@ client = ollama.Client(host=OLLAMA_HOST)
 request_lock = threading.Lock()
 
 def processimg(file_path):
+    print(f"analysing new image at '{file_path}'...\n")
     try:
         response = client.chat(
             model=MODEL_NAME,
@@ -78,8 +79,7 @@ def imgpath(last_path: Optional[str] = None) -> str:
             time.sleep(1)  # Wait longer if there's an error
 
 # main loop
+print("ready!")
 while True:
-    print("ready!")
     processimg(imgpath(imgpath()))
     print("\nWaiting for new screenshots...")
-
