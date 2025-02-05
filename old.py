@@ -1,3 +1,4 @@
+# deepseek did that and it's broken... 
 import threading
 import ollama
 import os

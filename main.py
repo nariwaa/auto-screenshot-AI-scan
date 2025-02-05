@@ -79,6 +79,7 @@ def imgpath(last_path: Optional[str] = None) -> str:
 
 # main loop
 while True:
+    print("ready!")
     processimg(imgpath(imgpath()))
     print("\nWaiting for new screenshots...")
 
